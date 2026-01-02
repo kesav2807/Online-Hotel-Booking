@@ -52,7 +52,7 @@ const Profile = () => {
                 updatePayload.avatar = formData.avatar;
             }
 
-            const { data } = await axios.put('http://localhost:5000/api/users/profile', updatePayload);
+            const { data } = await axios.put('https://hotel-backend-uasi.onrender.com/api/users/profile', updatePayload);
 
             // Sync with global auth state
             setUser(data);
@@ -161,3 +161,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
