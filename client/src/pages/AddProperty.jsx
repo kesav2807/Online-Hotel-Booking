@@ -56,7 +56,7 @@ const AddProperty = () => {
         }
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/properties', formData);
+            await axios.post('https://hotel-backend-uasi.onrender.com/api/properties', formData);
             alert('Property listed and pending admin approval!');
             navigate('/owner/dashboard');
         } catch (err) {
