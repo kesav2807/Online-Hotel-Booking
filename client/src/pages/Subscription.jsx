@@ -13,7 +13,7 @@ const Subscription = () => {
     const handleSubscribe = async () => {
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/api/users/subscribe');
+            await axios.post('https://hotel-backend-uasi.onrender.com/api/users/subscribe');
             alert('Subscription Activated Successfully!');
             navigate('/owner/dashboard');
         } catch (err) {
@@ -111,3 +111,4 @@ const Subscription = () => {
 };
 
 export default Subscription;
+
