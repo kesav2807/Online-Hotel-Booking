@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         // Initialize Socket
-        const newSocket = io('http://localhost:5000');
+        const newSocket = io('https://hotel-backend-uasi.onrender.com');
         setSocket(newSocket);
 
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
             newSocket.emit('join_room', userInfo._id);
 
             // Fetch fresh profile data to ensure local storage is up-to-date (e.g. phone number)
-            axios.get('http://localhost:5000/api/users/profile')
+            axios.get('https://hotel-backend-uasi.onrender.com/api/users/profile')
                 .then(({ data }) => {
                     // Merge new profile data with existing token/info (profile endpoint doesn't return token)
                     const updatedUser = { ...userInfo, ...data };
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (identifier, password) => {
-        const { data } = await axios.post('http://localhost:5000/api/users/login', { identifier, password });
+        const { data } = await axios.post('https://hotel-backend-uasi.onrender.com/api/users/login', { identifier, password });
         localStorage.setItem('userInfo', JSON.stringify(data));
         setUser(data);
         axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (userData) => {
-        const { data } = await axios.post('http://localhost:5000/api/users/register', userData);
+        const { data } = await axios.post('https://hotel-backend-uasi.onrender.com/api/users/register', userData);
         localStorage.setItem('userInfo', JSON.stringify(data));
         setUser(data);
         axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
