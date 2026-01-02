@@ -26,7 +26,7 @@ const EditProperty = () => {
     useEffect(() => {
         const fetchProperty = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/properties/${id}`);
+                const { data } = await axios.get(`https://hotel-backend-uasi.onrender.com/api/properties/${id}`);
                 setFormData({
                     title: data.title,
                     description: data.description,
@@ -275,3 +275,4 @@ const EditProperty = () => {
 };
 
 export default EditProperty;
+
