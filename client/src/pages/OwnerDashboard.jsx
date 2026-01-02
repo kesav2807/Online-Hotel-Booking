@@ -18,9 +18,9 @@ const OwnerDashboard = () => {
         const fetchData = async () => {
             try {
                 const [propsRes, enqRes, broadcastRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/properties/my'),
-                    axios.get('http://localhost:5000/api/enquiries/owner'),
-                    axios.get('http://localhost:5000/api/broadcasts/owner')
+                    axios.get('https://hotel-backend-uasi.onrender.com/api/properties/my'),
+                    axios.get('https://hotel-backend-uasi.onrender.com0/api/enquiries/owner'),
+                    axios.get('https://hotel-backend-uasi.onrender.com0/api/broadcasts/owner')
                 ]);
                 setProperties(propsRes.data);
                 setEnquiries(enqRes.data);
@@ -66,7 +66,7 @@ const OwnerDashboard = () => {
 
     const handleUpdateEnquiry = async (id, status) => {
         try {
-            await axios.put(`http://localhost:5000/api/enquiries/${id}`, { status });
+            await axios.put(`https://hotel-backend-uasi.onrender.com0/api/enquiries/${id}`, { status });
             setEnquiries(enquiries.map(e => e._id === id ? { ...e, status } : e));
         } catch (err) {
             alert('Failed to update enquiry');
@@ -75,7 +75,7 @@ const OwnerDashboard = () => {
 
     const handleAcceptBroadcast = async (id) => {
         try {
-            await axios.put(`http://localhost:5000/api/broadcasts/${id}/accept`);
+            await axios.put(`https://hotel-backend-uasi.onrender.com0/api/broadcasts/${id}/accept`);
             setBroadcasts(broadcasts.filter(b => b._id !== id));
             alert('✅ Request accepted! You can now call the customer.');
         } catch (err) {
@@ -217,7 +217,7 @@ const OwnerDashboard = () => {
                                     onClick={async () => {
                                         if (window.confirm('Are you sure you want to delete this property?')) {
                                             try {
-                                                await axios.delete(`http://localhost:5000/api/properties/${prop._id}`);
+                                                await axios.delete(`https://hotel-backend-uasi.onrender.com0/api/properties/${prop._id}`);
                                                 setProperties(properties.filter(p => p._id !== prop._id));
                                             } catch (err) {
                                                 alert('Failed to delete property');
@@ -306,7 +306,7 @@ const OwnerDashboard = () => {
                                             onClick={async () => {
                                                 if (window.confirm('Clear this request from your dashboard?')) {
                                                     try {
-                                                        await axios.delete(`http://localhost:5000/api/enquiries/${enq._id}`);
+                                                        await axios.delete(`https://hotel-backend-uasi.onrender.com0/api/enquiries/${enq._id}`);
                                                         setEnquiries(enquiries.filter(e => e._id !== enq._id));
                                                     } catch (err) {
                                                         alert('Failed to delete');
@@ -329,3 +329,4 @@ const OwnerDashboard = () => {
 };
 
 export default OwnerDashboard;
+
