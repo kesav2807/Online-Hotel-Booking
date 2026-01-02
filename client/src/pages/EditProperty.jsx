@@ -77,7 +77,7 @@ const EditProperty = () => {
         e.preventDefault();
         setSaving(true);
         try {
-            await axios.put(`http://localhost:5000/api/properties/${id}`, formData);
+            await axios.put(`https://hotel-backend-uasi.onrender.com/api/properties/${id}`, formData);
             alert('Property updated successfully!');
             navigate('/owner/dashboard');
         } catch (err) {
@@ -275,4 +275,5 @@ const EditProperty = () => {
 };
 
 export default EditProperty;
+
 
