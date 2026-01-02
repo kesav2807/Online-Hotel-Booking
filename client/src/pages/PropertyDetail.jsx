@@ -23,7 +23,7 @@ const PropertyDetail = () => {
     useEffect(() => {
         const fetchProperty = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:5000/api/properties/${id}`);
+                const { data } = await axios.get(`https://hotel-backend-uasi.onrender.com/api/properties/${id}`);
                 setProperty(data);
             } catch (err) {
                 console.error(err);
@@ -40,7 +40,7 @@ const PropertyDetail = () => {
 
         setSending(true);
         try {
-            await axios.post('http://localhost:5000/api/enquiries', {
+            await axios.post('https://hotel-backend-uasi.onrender.com/api/enquiries', {
                 propertyId: id,
                 ...enquiryData
             });
@@ -227,3 +227,4 @@ const PropertyDetail = () => {
 };
 
 export default PropertyDetail;
+
