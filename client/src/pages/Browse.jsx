@@ -59,7 +59,7 @@ const Browse = () => {
             if (searchFilters.startDate) params.append('startDate', searchFilters.startDate);
             if (searchFilters.endDate) params.append('endDate', searchFilters.endDate);
 
-            const { data } = await axios.get(`http://localhost:5000/api/properties?${params.toString()}`);
+            const { data } = await axios.get(`https://hotel-backend-uasi.onrender.com/api/properties?${params.toString()}`);
             setProperties(data);
         } catch (err) {
             console.error(err);
@@ -223,3 +223,4 @@ const Browse = () => {
 };
 
 export default Browse;
+
