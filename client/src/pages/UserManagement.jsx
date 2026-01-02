@@ -13,7 +13,7 @@ const UserManagement = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/users');
+                const { data } = await axios.get('https://hotel-backend-uasi.onrender.com/api/users');
                 setUsers(data);
             } catch (err) {
                 console.error(err);
@@ -27,7 +27,7 @@ const UserManagement = () => {
     const handleToggleStatus = async (id, currentStatus) => {
         const newStatus = currentStatus === 'active' ? 'suspended' : 'active';
         try {
-            await axios.put(`http://localhost:5000/api/users/${id}/status`, { status: newStatus });
+            await axios.put(`https://hotel-backend-uasi.onrender.com/api/users/${id}/status`, { status: newStatus });
             setUsers(users.map(u => u._id === id ? { ...u, accountStatus: newStatus } : u));
         } catch (err) {
             alert('Failed to update user status');
@@ -139,3 +139,4 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
+
