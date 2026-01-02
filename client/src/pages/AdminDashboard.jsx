@@ -23,8 +23,8 @@ const AdminDashboard = () => {
         const fetchAdminData = async () => {
             try {
                 const [propRes, userRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/properties/admin/all'),
-                    axios.get('http://localhost:5000/api/users')
+                    axios.get('https://hotel-backend-uasi.onrender.com/api/properties/admin/all'),
+                    axios.get('https://hotel-backend-uasi.onrender.com/api/users')
                 ]);
 
                 const pending = propRes.data.filter(p => p.approvalStatus === 'pending');
@@ -52,7 +52,7 @@ const AdminDashboard = () => {
 
     const handleApprove = async (id, status) => {
         try {
-            await axios.put(`http://localhost:5000/api/properties/${id}/approve`, { status });
+            await axios.put(`https://hotel-backend-uasi.onrender.com/api/properties/${id}/approve`, { status });
             setPendingProperties(pendingProperties.filter(p => p._id !== id));
             setAllProperties(allProperties.map(p => p._id === id ? { ...p, approvalStatus: status } : p));
             setStats(prev => ({ ...prev, pending: prev.pending - 1 }));
@@ -64,7 +64,7 @@ const AdminDashboard = () => {
     const handleDeleteProperty = async (id) => {
         if (!window.confirm('Are you sure you want to permanently delete this property? This action cannot be undone.')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/properties/${id}`);
+            await axios.delete(`https://hotel-backend-uasi.onrender.com/api/properties/${id}`);
             setAllProperties(allProperties.filter(p => p._id !== id));
             setPendingProperties(pendingProperties.filter(p => p._id !== id));
             setStats(prev => ({ ...prev, properties: prev.properties - 1 }));
@@ -369,3 +369,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
