@@ -57,7 +57,7 @@ const Home = () => {
         setBroadcasting(true);
         try {
             // 1. Save to Database (Persistence)
-            const { data: broadcast } = await axios.post('http://localhost:5000/api/broadcasts', {
+            const { data: broadcast } = await axios.post('https://hotel-backend-uasi.onrender.com/api/broadcasts', {
                 location: searchParams.location,
                 checkInDate: searchParams.startDate,
                 checkOutDate: searchParams.endDate,
@@ -413,3 +413,4 @@ const Home = () => {
 };
 
 export default Home;
+
